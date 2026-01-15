@@ -1,0 +1,92 @@
+Intro
+==========
+
+Go is cross-platform and open source, it can be used to create high-performance applications, it is fast statically typed, compiled language known for its simplicity and efficiency. Syntax is similar to C++.
+Go is used for web development(server side), Developing network-based programs, developing cross-platform enterprise applications, cloud-native development. Built for running scaled,distributed systems.
+Go has fast run time and compilation time, supports concurrency(Dealing with alot of things, tasks running parallel), has memory management, multiplatform. GO was designed to run on multiple cores and built to support concurrency.
+Go Programs are organized into packages, Go's standard library provides different core packages for us to use.
+
+GO Syntax
+==========
+A GO file consists of (package declaration, import packages, functions, statements and expressions)
+i.e:
+package main
+import ("fmt")
+
+func main() {
+  fmt.Println("Hello World!")
+}
+
+In GO statements are separated by ending a line or adding a semi-colon (;), these statements are found in between curly braces
+
+Comments in GO are written using - single line (//comment), and for multi line we use (/* comments */), we can use comments to prevent code execution
+
+GO Variables
+=========
+Variables are stored once, assign it a name and use it in multiple places in the application code i.e (var name ="Go Conference").Var can be changed. 
+In GO there are different types of variables such as 
+i. int
+ii. float32
+iii. string
+iv. bool
+Constants are like variables, except that their values cannot be change.
+In Go there are 2 ways of declaring a variable, using (var) keyword or using the (:=) sign i.e [var variableName type = value] or [variableName := value]
+In Go all variables are initialized sof if you declare a variable without an initial value its value will be set to the default value of its type 
+We can declare multiple variables in two ways in go
+- In a single line we can use for example [var a, b, c, d int = 1, 3, 5, 7]
+- In a block we can 
+    [   
+        var (
+            a int
+            b int = 1
+            c string = "hello"
+        )
+   ]
+Naming Rules for variables:
+- A variable name must start with a letter or an underscore character (_)
+- A variable cannot start with a digit
+- A variable name can only contain alpha-numeric characters and underscores (a-z,A-Z,0-9 and _)
+- Variable names are case-sensitive (age and AGE are different)
+- There is no limit on the length of the variable name
+- A variable name cannot contain spaces
+- The variable name cannot be any Go keywords
+Variable Names can be cameCased , PascalCased, snake_cased in Go
+Constant Names are usually written in uppercase letters for easy identification and differentitation from variables
+Constants can be declared both inside and outside of a function, just like variables we can declare multiple constants the same way
+
+GO Outputs
+==========
+Go has 3 functions to ouput text [Print(),Println(),Printf()]
+Print() prints its arguments with their default format.
+Println() similar to Print() with the difference that a whitespace is added between the arguments and a newline is added at the end
+Printf() function first formats its arguments based on the given formatting verb and then prints them.
+Verb Formats include:
+- %v - Prints the value in the default format
+- %#v - Prints the value in go-syntax format
+- %T - Prints the type of the value
+- %% - Prints the % sign
+There are various different ways to format variables based on also their type
+
+GO Data Types
+==========
+Go has many data types, you need to tell Go Compiler, the data type when declaring the variable, Go can infer the type when you assign a value
+Adding types makes a program more robust, reduces the likelihood of errors while it also helps developers to catch type mismatches sooner (at compile time)
+Go has 3 basic data types - bool(true or false), Numeric(int,float,point and complex), strings
+
+GO        Java
+- int8 => byte
+- int16 => short
+- int32 => int
+- int64 => long
+
+int[n] - refers to sign integers, can be negative or positve while uint[8] refeers to absolute numbers positive, we use the bits to specify the amount of memory a variable can use to store the same
+uint8 - unsigned 8 bit integers
+uint16 - unsigned 16 bit integers
+uint32 - unsigned 32 bit integers
+uint64 - unsigned 64 bit integers
+int8 - signed 8 bit integers
+int16 - signed 16 bit integers
+int32 - signed 32 bit integers
+int64 - signed 64 bit integers
+
+Floating point Types are typically used for numbers that contain a decimal point such as statistical data and monetary data
