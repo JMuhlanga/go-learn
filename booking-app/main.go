@@ -4,9 +4,9 @@ package main
 import "fmt"
 
 func main(){
-	var conferenceName ="Go Conference"
-	const conferenceTickets = 50
-	var remainingTickets = 50
+	var conferenceName string ="Go Conference"
+	const conferenceTickets int = 50
+	var remainingTickets uint = 50
 	
 	fmt.Printf("conferenceTickets is %T, remainingTickets is %T ,conferenceName is %T \n",conferenceTickets,remainingTickets,conferenceName)
 	// Formatted output - print formatted data - tells GO how to print formatted values, check docs on fmt
@@ -14,10 +14,25 @@ func main(){
 	fmt.Printf("We have a total of %v Tickets and %v are still available\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend")	
 	
-	var userName string
+	var firstName string
+	var lastName string
+	var email string
 	var userTickets int
+	
 	// ask user for name
-	userName = "Tom"
-	userTickets = 2
-	fmt.Printf("User %v booked %v tickets \n",userName, userTickets)
+	fmt.Println("Enter your first name")
+	fmt.Scan(&firstName)
+	
+	fmt.Println("Enter your last name")
+	fmt.Scan(&lastName)
+	
+	fmt.Println("Enter your email")
+	fmt.Scan(&email)
+	
+	fmt.Println("Enter number of tickets")
+	fmt.Scan(&userTickets)
+	
+	remainingTickets = remainingTickets - uint(userTickets)
+	
+	fmt.Printf("User %v %v booked %v tickets you will get an email at %v\n",firstName,lastName, userTickets,email)
 }

@@ -54,6 +54,15 @@ Variable Names can be cameCased , PascalCased, snake_cased in Go
 Constant Names are usually written in uppercase letters for easy identification and differentitation from variables
 Constants can be declared both inside and outside of a function, just like variables we can declare multiple constants the same way
 
+A pointer in go is a variable that stores the memory address of another variable. It allows you to indirectly access and modify the value of the variable it points to. Pointers are useful when you need to pass large data structures or modify values in functions without returning them explicitly.Also known as reference/ special variable.
+Pointers are declared using the format [&variable_name]
+
+&variable_name
+
+This can also be used in getting user input in the console/terminal using the fmt.Scan() function.i.e
+fmt.Scan(&variable_name) 
+
+
 GO Outputs
 ==========
 Go has 3 functions to ouput text [Print(),Println(),Printf()]
@@ -196,3 +205,51 @@ func main(){
 You can also append one slice to the other with {slice3 = append(slice1,slice2,...)}
 If an array is large and you need only a few elements, it is better to copy those elements using the {copy()} function - > [copy(dest,src)] 
 Copy function creates a new underlying array with only the required elements for the slice, this will reduce the memory used for the program 
+
+GO OPERATORS
+==========
+Operators are used to perform operations on variables and values.
+
+Arithmetic Operators
+--------------------
++	Addition
+-	Subtraction
+*	Multiplication
+/	Division
+%	Modulus (remainder after division)
+++	Increment (add 1)
+--	Decrement (subtract 1)
+
+Assignment Operators
+--------------------
+=	Simple assignment
++=	Add and assign
+-=	Subtract and assign
+*=	Multiply and assign
+/=	Divide and assign
+%=	Modulus and assign
+
+Comparison Operators
+--------------------
+==	Equal to
+!=	Not equal to
+<	Less than
+>	Greater than
+<=	Less than or equal to
+>=	Greater than or equal to
+
+Logical Operators
+-----------------
+&&	Logical AND
+||	Logical OR
+!	Logical NOT
+
+Bitwise Operators
+-----------------
+&	Bitwise AND
+|	Bitwise OR
+^	Bitwise XOR
+<<	Left shift
+>>	Right shift
+
+
