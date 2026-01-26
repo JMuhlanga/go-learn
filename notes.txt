@@ -252,4 +252,437 @@ Bitwise Operators
 <<	Left shift
 >>	Right shift
 
+GO Conditions
+==========
+Conditional statements are used to perform different actions based on different conditions
+In general, languages provide various control structures to control the applications flow.
+A loop statement allows us to execute code multiple times ,in a loop
+A condition can either be [true] or [false], thus Go supports the usual comparison operators as well as logical operators
+GO has the following conditional statements {if, else,else if,switch}
+    [if] statements specify a block of code to be executed if a condition is true
+        Syntax: 
+            if condition {
+                //code to be executed if condition is true
+            }
+    [else] statements are used to specify a block of code to be executed if the condition is false 
+        Syntax:
+            if condition {
+            // code to be executed if condition is true
+            } else {
+            // code to be executed if condition is false
+            }
+    [else if] statements are used to specify a new condition if the first condition is false
+        Syntax:
+            if condition1 {
+            // code to be executed if condition1 is true
+            } else if condition2 {
+            // code to be executed if condition1 is false and condition2 is true
+            } else {
+            // code to be executed if condition1 and condition2 are both false
+            }
+    [Nested if] statements are those if statements that have if statements within
+        Syntax:
+            if condition1 {
+            // code to be executed if condition1 is true
+                if condition2 {
+                    // code to be executed if both condition1 and condition2 are true
+                }
+            }
+    [switch] statements are used to select one of many code blocks to be executed. Only runs when the matched case so it does not need a break statement. The [default] keyword specifies some code to run in case there is not case match
+        Syntax(single case):
+            switch expression {
+                case x:
+                // code block
+                case y:
+                // code block
+                case z:
+                ...
+                default:
+                // code block
+            }
+        Syntax (Multi-case): Possible to have multiple values for each [case] in the [switch] statement
+            switch expression {
+                case x,y:
+                // code block if expression is evaluated to x or y
+                case v,w:
+                // code block if expression is evaluated to v or w
+                case z:
+                ...
+                default:
+                // code block if expression is not found in any cases
+            }
 
+In GO loops are simplified we have [for] loops, loops through a block of code a specified number of times, this is the only loop available in GO
+    Syntax:
+        for statement1; statement2; statement3 {
+            // code to be executed for each iteration
+        }
+        
+    statement1 Initializes the loop counter value.
+    
+    statement2 Evaluated for each loop iteration. If it evaluates to TRUE, the loop continues. If it evaluates to FALSE, the loop ends.
+    
+    statement3 Increases the loop counter value.
+    
+    Example:
+    
+        for i:=0; i < 5; i++ {
+            fmt.Println(i)
+        }
+The [continue] Statement is used to skip one or more iterations in the loop. It then continues with the next iteration in the loop, for example:
+
+    package main
+    import ("fmt")
+    
+    func main() {
+        for i:=0; i < 5; i++ {
+            if i == 3 {
+                continue
+            }
+            fmt.Println(i) // -> 0 1 2 4
+        }
+    }    
+The [break] statement is used to break/terminate the loop execution, example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        for i:=0; i < 5; i++ {
+            if i == 3 {
+                break
+            }
+            fmt.Println(i) // -> 0 1 2
+        }
+    }
+It is possible to place a loop inside another loop, the "inner loop" will be executed one time for each iteration of the "outer loop",these are known as [nested loops] example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        adj := [2]string{"big", "tasty"}
+        fruits := [3]string{"apple", "orange", "banana"}
+        for i:=0; i < len(adj); i++ {
+            for j:=0; j < len(fruits); j++ {
+                fmt.Println(adj[i],fruits[j]) // - {big apple  big orange  big banana  tasty apple  tasty orange  tasty banana}
+            }
+        }
+    }
+The [range] keyword is used to more easily iterate through the elements of an array, slice or map. It returns both the index and the value. You can omit the output of one of the values using (_), Syntax:
+    for index, value := range array|slice|map {
+        // code to be executed for each iteration
+    }
+Example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        fruits := [3]string{"apple", "orange", "banana"}
+        for idx, val := range fruits {
+            fmt.Printf("%v\t%v\n", idx, val) // -> {0 apple  1 orange  2 banana}
+        }
+    }
+
+GO Functions
+==========
+A function is a block of statements that can be used repeatedly in a program, it will not load automatically when an application loads, it will be executed by a call to the function
+To create a function we use the [func] keyword, specify a name of the function followed by a parentheses (), then add the code for execution within the curly braces {}, Syntax:
+    func FunctionName() {
+    // code to be executed
+    }
+Then we call the function above with [FunctionName()], example:
+    package main
+    import ("fmt")
+    
+    func myMessage() {
+        fmt.Println("I just got executed!")
+    }
+    
+    func main() {
+        myMessage() // call the function -> "I just got executed!"
+    }
+A function name must start with a letter, can only contain alpha-numeric characters and underscores [A-z,0-9 and _], function names are case sensitive, a function name cannot contain spaces, If the function name consists of multiple words, techniques introduced for multi-word variable naming can be used
+Information can be passed to functions as a parameter, parameters can act as variables inside the function, parameters and their types are specified after the function name, inside the parentheses, you can add as many parameters as you want, just separate them with a comma, Syntax:
+    func FunctionName(param1 type, param2 type, param3 type) {
+        // code to be executed
+    }
+Example:
+    package main
+    import ("fmt")
+    
+    func familyName(fname string) {
+        fmt.Println("Hello", fname, "Refsnes")
+    }
+    
+    func main() {
+        familyName("Liam") // -> Hello Liam Refsnes
+        familyName("Jenny") // -> Hello Jenny Refsnes
+        familyName("Anja") // -> Hello Anja Refsnes
+    }
+If you want the function to return a value you need to define the data type of the return value  (such as [int], [string], etc) and also use the [return] keyword inside the function, Syntax:
+    func FunctionName(param1 type, param2 type) type {
+        // code to be executed
+        return output
+    }
+Example:
+    package main
+    import ("fmt")
+    
+    func myFunction(x int, y int) int {
+        return x + y
+    }
+    
+    func main() {
+        fmt.Println(myFunction(1, 2)) // -> 3
+    }    
+
+In Go, you can name the return values of a function, Example:
+    package main
+    import ("fmt")
+    
+    func myFunction(x int, y int) (result int) {
+        result = x + y
+        return
+    }
+    
+    func main() {
+        total := myFunction(1,2) // we can store the return value in a varaible
+        fmt.Println(total) // -> 3
+    }
+Go can also return multiple values ,Example:
+    package main
+    import ("fmt")
+    
+    func myFunction(x int, y string) (result int, txt1 string) {
+        result = x + x
+        txt1 = y + " World!"
+        return
+    }
+    
+    func main() {
+        fmt.Println(myFunction(5, "Hello")) // -> 10 Hello World!
+    }
+In the event we do not want to return a particular value, or omit we can add _ to that value
+
+Go Accepts recursion functions, a function is recursive if it calls itself and reaches a stop condition, Recursion is a common mathematical and programming concept meaning you can loop through data to reach a result. Example:
+    package main
+    import ("fmt")
+    
+    func factorial_recursion(x float64) (y float64) {
+        if x > 0 {
+            y = x * factorial_recursion(x-1)
+        } else {
+            y = 1
+        }
+        return
+    }
+    
+    func main() {
+        fmt.Println(factorial_recursion(4))
+    }
+
+GO Struct
+==========
+A struct (short for structure) is used to create a collection of members of different data types into a single variable, while arrays are used to store multiple values of the same data type into a single variable, structs are used to store multiple values of different data types into a single variable. They can be useful for grouping data together to create records
+Declaring a struct:
+    type struct_name struct {
+        member1 datatype;
+        member2 datatype;
+        member3 datatype;
+        ...
+    }
+Example of declaring a struct person with the following members name, age, job and salary:
+    type Person struct {
+        name string
+        age int
+        job string
+        salary int
+    }
+To acces any member of a structure we use the (.) operator between the structure variable name and structure member, Example:
+    package main
+    import ("fmt")
+    
+    type Person struct {
+        name string
+        age int
+        job string
+        salary int
+    }
+    
+    func main() {
+        var pers1 Person
+        var pers2 Person
+        
+        // Pers1 specification
+        pers1.name = "Hege"
+        pers1.age = 45
+        pers1.job = "Teacher"
+        pers1.salary = 6000
+        
+        // Pers2 specification
+        pers2.name = "Cecilie"
+        pers2.age = 24
+        pers2.job = "Marketing"
+        pers2.salary = 4500
+        
+        // Access and print Pers1 info
+        fmt.Println("Name: ", pers1.name) //-> Name: Hege
+        fmt.Println("Age: ", pers1.age) // -> Age: 45
+        fmt.Println("Job: ", pers1.job) // -> Job: Teacher
+        fmt.Println("Salary: ", pers1.salary) // -> Salary: 6000
+        
+        // Access and print Pers2 info
+        fmt.Println("Name: ", pers2.name) // -> Name: Cecillie
+        fmt.Println("Age: ", pers2.age) // -> Age: 24
+        fmt.Println("Job: ", pers2.job) // -> Job: Marketing
+        fmt.Println("Salary: ", pers2.salary) // -> Salary: 4500
+    }
+You can also pass a structure as an argument i.e
+    // Print Pers1 info by calling a function
+    printPerson(pers1)
+    
+    // Print Pers2 info by calling a function
+    printPerson(pers2)
+    func printPerson(pers Person) {
+        fmt.Println("Name: ", pers.name)
+        fmt.Println("Age: ", pers.age)
+        fmt.Println("Job: ", pers.job)
+        fmt.Println("Salary: ", pers.salary)
+    }    
+    
+    the above prints
+    /* 
+        Name: Hege
+        Age: 45
+        Job: Teacher
+        Salary: 6000
+        Name: Cecilie
+        Age: 24
+        Job: Marketing
+        Salary: 4500
+    */
+    
+GO Maps
+==========
+Maps are used to store data values in key:value pairs like objects in other languages, Each element is a key:value pair.
+A map is unordered and changeable collection that does not allow duplicates, thee length of a map is the number of its elements, you can find it using the [len()] function. 
+The default value of a map is nil.
+Maps hold reference to an underlying hash table
+GO has multiple ways for creating maps
+
+We can create maps using [var] and [:=], Syntax:
+    var a = map[KeyType]ValueType{key1:value1, key2:value2,...}
+    b := map[KeyType]ValueType{key1:value1, key2:value2,...}
+Example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        var a = map[string]string{"brand": "Ford", "model": "Mustang", "year": "1964"}
+        b := map[string]int{"Oslo": 1, "Bergen": 2, "Trondheim": 3, "Stavanger": 4}
+        
+        fmt.Printf("a\t%v\n", a)
+        fmt.Printf("b\t%v\n", b)
+    }
+    
+    /*
+        a   map[brand:Ford model:Mustang year:1964]
+        b   map[Bergen:2 Oslo:1 Stavanger:4 Trondheim:3]    
+    */
+
+We can create maps using the [make()] keyword, Syntax:
+    var a = make(map[KeyType]ValueType)
+    b := make(map[KeyType]ValueType)
+Example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        var a = make(map[string]string) // The map is empty now
+        a["brand"] = "Ford"
+        a["model"] = "Mustang"
+        a["year"] = "1964"
+                                        // a is no longer empty
+        b := make(map[string]int)
+        b["Oslo"] = 1
+        b["Bergen"] = 2
+        b["Trondheim"] = 3
+        b["Stavanger"] = 4
+        
+        fmt.Printf("a\t%v\n", a)
+        fmt.Printf("b\t%v\n", b)
+    }
+    /*
+        a   map[brand:Ford model:Mustang year:1964]
+        b   map[Bergen:2 Oslo:1 Stavanger:4 Trondheim:3]
+    */
+    
+We can also create an empty map, one by using the [make()] functioin and the other by using the Syntax below:
+    var a map[KeyType]ValueType
+Example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        var a = make(map[string]string)
+        var b map[string]string
+        
+        fmt.Println(a == nil)
+        fmt.Println(b == nil)
+    }
+    /*
+        false
+        true
+    */
+Allowed key types - the map key can be and data type for which the equality operator (==) is defined. Then inside include:
+ - Booleans
+ - Numbers
+ - Strings
+ - Arrays
+ - Pointers
+ - Structs
+ - Interfaces(as long as the dynamic type supports equality)
+Invalid key types are:
+    - SLices
+    - Maps
+    - Functions
+These types are invalid because the equality operator (==) is not defined for them
+
+You can access map elements by , Syntax:
+    value = map_name[key]
+Example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        var a = make(map[string]string)
+        a["brand"] = "Ford"
+        a["model"] = "Mustang"
+        a["year"] = "1964"
+        
+        fmt.Printf(a["brand"]) // -> Ford
+    }
+ 
+You can update and add Map elements by, Syntax:
+    map_name[key] = value
+Example:
+    package main
+    import ("fmt")
+    
+    func main() {
+        var a = make(map[string]string)
+        a["brand"] = "Ford"
+        a["model"] = "Mustang"
+        a["year"] = "1964"
+        
+        fmt.Println(a)
+        
+        a["year"] = "1970" // Updating an element
+        a["color"] = "red" // Adding an element
+        
+        fmt.Println(a)
+    }
+    
+    /*
+        map[brand:Ford model:Mustang year:1964]
+        map[brand:Ford color:red model:Mustang year:1970]
+    */
