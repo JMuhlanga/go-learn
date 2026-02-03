@@ -1,0 +1,7 @@
+Udemy Course Notes
+====================
+Go is an open source programming language that makes it easy to build simple, reliable, and efficient software. Published by Google Inc.
+It Focuses on simplicity, efficiency, and reliability.
+Offers High Performance and focuses on concurrency.
+Many core features are built-in, such as garbage collection, type safety, and concurrency support. Comes with a standard library that provides a wide range of functionality, including networking, file I/O, and regular expressions.
+It is a statically typed, compiled language that emphasizes simplicity and efficiency.Allows you to catch and handle errors gracefully.
