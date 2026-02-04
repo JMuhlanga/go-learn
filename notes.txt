@@ -686,3 +686,19 @@ Example:
         map[brand:Ford model:Mustang year:1964]
         map[brand:Ford color:red model:Mustang year:1970]
     */
+    
+    GO Routines
+    ==========
+    Concurrency is used to make our program more efficient by allowing multithreading and parallelism. It allows us to run multiple tasks simultaneously, improving performance and responsiveness.
+    We can make our application concurrent by simply running a [go] keyword before a function call. This will create a new goroutine that will execute the function concurrently.i.e
+    go sendTicket(userTickets, firstName, lastName, email)
+    We also utilise WaitGroups to manage the goroutines and ensure they complete before the main function exits. We use the sync package to manage the WaitGroup. We add using wg.Add(1) before each goroutine and wg.Done() after each goroutine completes.
+    
+    NOTE
+    ==========
+    Package variables are defined at the top outside all functions
+    A package is a collection of go files
+    When importing functions from packages we capitalise the first letter (PascalCase) you can also export variables as well using that format
+    In Go we cannot have mixed data types in a map
+    Creating a slice with make is an alternate way of making a slice, we need to define the initial size of the slice 
+    Structs allow mixed data types, they are like classes in Java
